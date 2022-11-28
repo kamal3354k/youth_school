@@ -32,7 +32,7 @@ const RegisterRightSide = () => {
     setFormData((pre) => ({ ...pre, [name]: value }));
   };
   const onSubmitHandler = async () => {
-    let isError = true;
+    let isError = {};
     await Object.entries(formData)?.map((item) => {
       setError((pre) => ({
         ...pre,
@@ -51,7 +51,7 @@ const RegisterRightSide = () => {
           ? "This number already register!"
           : "",
       }));
-      isError = !item[1]
+      isError[item[0]] = !item[1]
         ? true
         : item[0] === "name" && item[1].length < 3
         ? true
@@ -68,7 +68,7 @@ const RegisterRightSide = () => {
     });
 
     // if no error found
-    if (!isError) {
+    if (!Object.values(isError).includes(true)) {
       setIsApiCall(true);
       const response = await toast
         .promise(
