@@ -6,7 +6,9 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
-
+body{
+overflow-y: hidden;
+}
 div#main-Register-page-container {
   display: flex;
   width: 100%;
@@ -274,6 +276,9 @@ div#main-Register-page-container>footer{
 
 
 @media screen and (max-width: 630px) {
+  body{
+    overflow-y: unset;
+  }
   div#main-Register-page-container{
       flex-direction:column;
   }
