@@ -17,14 +17,13 @@ const RegisterRightSide = () => {
   const [formData, setFormData] = useState(initaiForm);
   const [error, setError] = useState(initaiError);
   const [isApiCall, setIsApiCall] = useState(false);
+  const FetchUserHandler = async () => {
+    const response = await getAllUser().catch((err) => console.log(err));
+    if (response?.data) {
+      setData(response?.data);
+    }
+  };
   useEffect(() => {
-    const FetchUserHandler = async () => {
-      const response = await getAllUser().catch((err) => console.log(err));
-      if (response?.data) {
-        setData(response?.data);
-      }
-    };
-
     FetchUserHandler();
   }, []);
 
@@ -74,7 +73,7 @@ const RegisterRightSide = () => {
         .promise(
           postUser({
             ...formData,
-            id: data?.length>0?data[data?.length - 1].id + 1:1,
+            id: data?.length > 0 ? data[data?.length - 1].id + 1 : 1,
             date: await getTodayDateWithtime(),
           }),
           {
@@ -89,6 +88,7 @@ const RegisterRightSide = () => {
       if (response?.status === 200) {
         setFormData(initaiForm);
         setIsApiCall(false);
+        FetchUserHandler();
       }
     }
   };

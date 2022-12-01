@@ -22,7 +22,7 @@ const RegisterLeftSide = () => {
           experts?
         </p>
         <p className="normal-content-text">
-          Join our upcoming Marketing & Analytics program, making you land into
+          Be a part of our upcoming Marketing & Analytics program, making you land into
           that high-valued job.
         </p>
         <p className="bold-content-text">Apply to stay updated! </p>
